@@ -80,12 +80,12 @@ public:
         return sex;
     }
 
-    virtual void Display()
+    virtual void display()
     {
         cout << setw(1) << getId() << setw(11) << getName() << setw(10) << getSex();
     }
 
-    virtual void Input()
+    virtual void input()
     {
         int ID = dataValidator.input_PatientID();
         setId(ID);

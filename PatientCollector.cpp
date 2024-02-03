@@ -48,7 +48,7 @@ public:
         {
             try
             {
-                it->Display();
+                it->display();
                 cout << endl;
             }
             catch (const std::exception &e)
@@ -60,13 +60,14 @@ public:
         cout << "Press any key to continue...";
         cin.ignore();
         cin.get();
+        system("cls");
     }
 
     void updatePatient(Patient *sick)
     {
         int choice;
         cout << "==========FIND MENU==========" << endl;
-        cout << "1. Find by ID" << endl;
+        cout << "1. Find by ID(Start from 1 digit)" << endl;
         cout << "2. Find by name" << endl;
         cout << "3. Back to main menu" << endl;
         cout << "Enter choice(1-3)-> ";
@@ -78,8 +79,9 @@ public:
             char performChoice;
 
             int patientID;
-            cout << "Enter ID: ";
+            cout << "Enter ID(Start from 1 digit): ";
             cin >> patientID;
+            system("cls");
             auto it = find_if(patients.begin(), patients.end(),
                               [patientID](const Patient *sick)
                               { return sick->getId() == patientID; });
@@ -89,7 +91,7 @@ public:
                 {
                     // Display the information before edition
                     cout << "Patient information to be updated:\n";
-                    (*it)->Display(); // Use (*it) instead of sick
+                    (*it)->display(); // Use (*it) instead of sick
 
                     // Confirm modification
                     cout << "Do you want to modify this Patient? (y/n): ";
@@ -97,11 +99,11 @@ public:
                     cin >> choices;
 
                     if (choices == 'y' || choices == 'Y')
-
+                        system("cls");
                     {
                         int choice;
                         cout << "==========EDIT MENU==========" << endl;
-                        cout << "1. Patient ID" << endl;
+                        cout << "1. Patient ID(Start from 1 digit)" << endl;
                         cout << "2. Name" << endl;
                         cout << "3. Reason/Condition" << endl;
                         cout << "4. Back" << endl;
@@ -111,40 +113,60 @@ public:
                         {
                         case 1:
                         {
+                            system("cls");
                             int new_id;
-                            cout << "Enter new ID: ";
+                            cout << "Enter new ID(Start from 1 digit): ";
                             cin >> new_id;
 
                             (*it)->setId(new_id);
                             cout << "Patient ID changed successfully" << endl;
+                            cout << "Press any key to continue...";
+                            cin.ignore();
+                            cin.get();
+                            system("cls");
                         }
                         break;
                         case 2:
                         {
+                            system("cls");
                             string new_name;
                             cout << "Enter new name: ";
                             cin >> new_name;
 
                             (*it)->setName(new_name);
                             cout << "Name changed successfully" << endl;
+                            cout << "Press any key to continue...";
+                            cin.ignore();
+                            cin.get();
+                            system("cls");
                         }
                         break;
                         case 3:
                             if (typeid(**it) == typeid(OutPatient))
                             {
+                                system("cls");
                                 string newReason;
                                 cout << "Enter new reason: ";
                                 cin >> newReason;
                                 dynamic_cast<OutPatient *>(*it)->setReason(newReason);
                                 cout << "Reason updated successfully.\n";
+                                cout << "Press any key to continue...";
+                                cin.ignore();
+                                cin.get();
+                                system("cls");
                             }
                             else if (typeid(**it) == typeid(InPatient))
                             {
+                                system("cls");
                                 string newCondition;
                                 cout << "Enter new Condition ";
                                 cin >> newCondition;
                                 dynamic_cast<InPatient *>(*it)->setCondition(newCondition);
                                 cout << "Condition updated successfully.\n";
+                                cout << "Press any key to continue...";
+                                cin.ignore();
+                                cin.get();
+                                system("cls");
                             }
                             else
                             {
@@ -165,6 +187,7 @@ public:
                     cout << "Patient is not found" << endl;
                     cout << "Do you want to continue? (y/n) ->";
                     cin >> performChoice;
+                    system("cls");
                 }
             } while (performChoice == 'y' || performChoice == 'Y');
         }
@@ -174,17 +197,19 @@ public:
             char performChoice;
             do
             {
+                system("cls");
                 string name;
                 cout << "Enter name: ";
                 cin >> name;
                 auto it = find_if(patients.begin(), patients.end(),
                                   [name](const Patient *sick)
                                   { return sick->getName() == name; });
+                system("cls");
                 if (it != patients.end())
                 {
                     // Display the information before edition
                     cout << "Patient information to be updated:\n";
-                    (*it)->Display(); // Use (*it) instead of sick
+                    (*it)->display(); // Use (*it) instead of sick
 
                     // Confirm modification
                     cout << "Do you want to modify this Patient? (y/n): ";
@@ -193,9 +218,10 @@ public:
 
                     if (choices == 'y' || choices == 'Y')
                     {
+                        system("cls");
                         int choice;
                         cout << "==========EDIT MENU==========" << endl;
-                        cout << "1. Patient ID" << endl;
+                        cout << "1. Patient ID(Start from 1 digit)" << endl;
                         cout << "2.	Name" << endl;
                         cout << "3.	Condition/Reason" << endl;
                         cout << "4. Back" << endl;
@@ -205,25 +231,36 @@ public:
                         {
                         case 1:
                         {
+                            system("cls");
                             int new_id;
-                            cout << "Enter new ID: ";
+                            cout << "Enter new ID(Start from 1 digit): ";
                             cin >> new_id;
 
                             (*it)->setId(new_id);
                             cout << "Patient ID changed successfully" << endl;
+                            cout << "Press any key to continue...";
+                            cin.ignore();
+                            cin.get();
+                            system("cls");
                         }
                         break;
                         case 2:
                         {
+                            system("cls");
                             string new_name;
                             cout << "Enter new name: ";
                             cin >> new_name;
 
                             (*it)->setName(new_name);
                             cout << "Name changed successfully" << endl;
+                            cout << "Press any key to continue...";
+                            cin.ignore();
+                            cin.get();
+                            system("cls");
                         }
                         break;
                         case 3:
+                            system("cls");
                             if (typeid(**it) == typeid(OutPatient))
                             {
                                 string newReason;
@@ -231,6 +268,10 @@ public:
                                 cin >> newReason;
                                 dynamic_cast<OutPatient *>(*it)->setReason(newReason);
                                 cout << "Reason updated successfully.\n";
+                                cout << "Press any key to continue...";
+                                cin.ignore();
+                                cin.get();
+                                system("cls");
                             }
                             else if (typeid(**it) == typeid(InPatient))
                             {
@@ -239,6 +280,10 @@ public:
                                 cin >> newCondition;
                                 dynamic_cast<InPatient *>(*it)->setCondition(newCondition);
                                 cout << "Condition updated successfully.\n";
+                                cout << "Press any key to continue...";
+                                cin.ignore();
+                                cin.get();
+                                system("cls");
                             }
                             else
                             {
@@ -259,6 +304,7 @@ public:
                     cout << "Patient is not found" << endl;
                     cout << "Do you want to continue? (y/n) ->";
                     cin >> performChoice;
+                    system("cls");
                 }
             } while (performChoice == 'y' || performChoice == 'Y');
             break;
@@ -268,6 +314,7 @@ public:
             cout << "Press any key to continue...";
             cin.ignore();
             cin.get();
+            system("cls");
             break;
         }
     }
@@ -276,7 +323,7 @@ public:
     {
         int choice;
         cout << "==========FIND MENU==========" << endl;
-        cout << "1. Find by ID" << endl;
+        cout << "1. Find by ID(Start from 1 digit)" << endl;
         cout << "2. Find by name" << endl;
         cout << "3. Back to main menu" << endl;
         cout << "Enter choice(1-3)-> ";
@@ -285,20 +332,22 @@ public:
         {
         case FINDID:
         {
+            system("cls");
             char performChoice;
             int patientID;
-            cout << "Enter ID: ";
+            cout << "Enter ID(Start from 1 digit): ";
             cin >> patientID;
             auto it = find_if(patients.begin(), patients.end(),
                               [patientID](const Patient *sick)
                               { return sick->getId() == patientID; });
             do
             {
+                system("cls");
                 if (it != patients.end())
                 {
                     // Display the information before deletion
                     cout << "Patient information to be deleted:\n";
-                    (*it)->Display(); // Use (*it) instead of sick
+                    (*it)->display(); // Use (*it) instead of sick
 
                     // Confirm deletion
                     cout << "Do you want to delete this Patient? (y/n): ";
@@ -307,8 +356,13 @@ public:
 
                     if (choices == 'y' || choices == 'Y')
                     {
+                        system("cls");
                         patients.erase(it);
                         cout << "Patient deleted successfully." << endl;
+                        cout << "Press any key to continue...";
+                        cin.ignore();
+                        cin.get();
+                        system("cls");
                     }
                 }
                 else
@@ -316,6 +370,7 @@ public:
                     cout << "Patient is not found" << endl;
                     cout << "Do you want to continue? (y/n) ->";
                     cin >> performChoice;
+                    system("cls");
                 }
             } while (performChoice == 'y' || performChoice == 'Y');
             break;
@@ -325,6 +380,7 @@ public:
             char performChoice;
             do
             {
+                system("cls");
                 string name;
                 cout << "Enter name: ";
                 cin >> name;
@@ -333,9 +389,10 @@ public:
                                   { return sick->getName() == name; });
                 if (it != patients.end())
                 {
+                    system("cls");
                     // Display the information before deletion
                     cout << "Patient information to be deleted:\n";
-                    (*it)->Display(); // Use (*it) instead of sick
+                    (*it)->display(); // Use (*it) instead of sick
 
                     // Confirm deletion
                     cout << "Do you want to delete this Patient? (y/n): ";
@@ -344,8 +401,13 @@ public:
 
                     if (choices == 'y' || choices == 'Y')
                     {
+                        system("cls");
                         patients.erase(it);
                         cout << "Patient deleted successfully." << endl;
+                        cout << "Press any key to continue...";
+                        cin.ignore();
+                        cin.get();
+                        system("cls");
                     }
                 }
                 else
@@ -353,6 +415,7 @@ public:
                     cout << "Patient is not found" << endl;
                     cout << "Do you want to continue? (y/n) ->";
                     cin >> performChoice;
+                    system("cls");
                 }
             } while (performChoice == 'y' || performChoice == 'Y');
             break;
@@ -374,6 +437,7 @@ public:
         cout << "2. Sort by name" << endl;
         cout << "Enter choice(1-2)-> ";
         cin >> choice;
+        system("cls");
         switch (choice)
         {
         case SORTID:
@@ -381,18 +445,27 @@ public:
                  [](const Patient *a, const Patient *b)
                  { return a->getId() < b->getId(); });
             cout << "Sorted by ID successfully" << endl;
+            cout << "Press any key to continue...";
+            cin.ignore();
+            cin.get();
+            system("cls");
             break;
         case SORTNAME:
             sort(patients.begin(), patients.end(),
                  [](const Patient *a, const Patient *b)
                  { return a->getName() < b->getName(); });
             cout << "Sorted by name successfully" << endl;
+            cout << "Press any key to continue...";
+            cin.ignore();
+            cin.get();
+            system("cls");
             break;
         default:
             cout << "Invalid choice." << endl;
             cout << "Press any key to continue...";
             cin.ignore();
             cin.get();
+            system("cls");
             break;
         }
     }
@@ -403,9 +476,10 @@ public:
         cout << "==========FIND MENU==========" << endl;
         cout << "1. Find by ID" << endl;
         cout << "2. Find by name" << endl;
-        cout << "3. Back to main menu" << endl;
-        cout << "Enter choice(1-3)-> ";
+        cout << "3. Back to the main menu" << endl;
+        cout << "Enter choice (1-3): ";
         cin >> choice;
+        system("cls");
         switch (choice)
         {
         case FINDID:
@@ -413,51 +487,84 @@ public:
             int patientID;
             cout << "Enter ID: ";
             cin >> patientID;
+
             auto it = find_if(patients.begin(), patients.end(),
                               [patientID](const Patient *sick)
                               { return sick->getId() == patientID; });
+            system("cls");
+
             if (it != patients.end())
             {
-                (*it)->Display();
-                cout << endl;
+                (*it)->display();
+                cout << "Is this the correct patient? (y/n): ";
+                char response;
+                cin >> response;
+
+                if (response == 'y' || response == 'Y')
+                {
+                    cout << "Continuing..." << endl;
+                    system("cls");
+                }
+                else
+                {
+                    cout << "Patient not confirmed. Returning to the main menu." << endl;
+                }
             }
             else
             {
-                cout << "Patient is not found" << endl;
+                cout << "Patient not found" << endl;
             }
             break;
         }
         case FINDNAME:
         {
-            string name;
+            string patientName;
             cout << "Enter name: ";
-            cin >> name;
+            cin.ignore(); // Ignore any previous newline characters
+            getline(cin, patientName);
+            system("cls");
             auto it = find_if(patients.begin(), patients.end(),
-                              [name](const Patient *sick)
-                              { return sick->getName() == name; });
+                              [patientName](const Patient *sick)
+                              { return sick->getName() == patientName; });
+
             if (it != patients.end())
             {
-                (*it)->Display();
-                cout << endl;
+                system("cls");
+                (*it)->display();
+                cout << "Is this the correct patient? (y/n): ";
+                char response;
+                cin >> response;
+
+                if (response == 'y' || response == 'Y')
+                {
+                    cout << "Continuing..." << endl;
+                    system("cls");
+                }
+                else
+                {
+                    cout << "Patient not confirmed. Returning to the main menu." << endl;
+                }
             }
             else
             {
-                cout << "Patient is not found" << endl;
+                cout << "Patient not found" << endl;
             }
             break;
         }
+
         default:
             cout << "Invalid choice." << endl;
             cout << "Press any key to continue...";
             cin.ignore();
             cin.get();
+            system("cls");
             break;
         }
     }
 
     void savePatient()
     {
-        ofstream outputFile("Patient.dat", ios::out | ios::binary);
+        ofstream outputFile("Patient.dat", ios::out);
 
         if (!outputFile.is_open())
         {
@@ -466,9 +573,34 @@ public:
         }
         else
         {
-            for (const auto &accountPtr : patients)
+            for (const auto &patient : patients)
             {
-                outputFile.write(reinterpret_cast<char *>(accountPtr), sizeof(Patient));
+                if (typeid(*patient) == typeid(InPatient))
+                {
+                    // Save InPatient information
+                    outputFile << "In Patient:" << endl;
+                    outputFile << "-------------------------------------------------------------------\n";
+                    outputFile << "ID      Name        Sex           Condition \n";
+                    outputFile << "-------------------------------------------------------------------\n";
+                    outputFile << patient->getId()
+                               << setw(12) << patient->getName()
+                               << setw(15) << patient->getSex()
+                               << setw(20) << dynamic_cast<InPatient *>(patient)->getCondition() << endl;
+                    outputFile << "-------------------------------------------------------------------\n";
+                }
+                else if (typeid(*patient) == typeid(OutPatient))
+                {
+                    // Save OutPatient information (you can add a similar block as needed)
+                    outputFile << "Out Patient:" << endl;
+                    outputFile << "-------------------------------------------------------------------\n";
+                    outputFile << "ID      Name        Sex           Reason \n";
+                    outputFile << "-------------------------------------------------------------------\n";
+                    outputFile <<  patient->getId()
+                               << setw(12) << patient->getName()
+                               << setw(15) << patient->getSex()
+                               << setw(20) << dynamic_cast<OutPatient *>(patient)->getReason() << endl;
+                    outputFile << "-------------------------------------------------------------------\n";
+                }
             }
 
             cout << "File saved successfully" << endl;
@@ -479,7 +611,7 @@ public:
 
     void loadPatient()
     {
-        ifstream inputFile("Patient.dat", ios::in | ios::binary);
+        ifstream inputFile("Patient.dat", ios::in);
         if (!inputFile.is_open())
         {
             cout << "Error in opening file...\n";
@@ -488,19 +620,36 @@ public:
 
         try
         {
-            while (true)
+            int id;
+            string name;
+            string additionalInfo;
+
+            while (inputFile >> id >> name)
             {
-                Patient *sick = new Patient();
-                if (!inputFile.read(reinterpret_cast<char *>(sick), sizeof(Patient)))
+                // Depending on your Patient class, add deserialization for other members
+                Patient *patient;
+                if (additionalInfo == "Condition:")
                 {
-                    // Reached end of file
-                    delete sick; // Clean up the dynamically allocated memory
-                    break;
+                    patient = new InPatient();
+                    dynamic_cast<InPatient *>(patient)->setCondition(additionalInfo);
+                }
+                else if (additionalInfo == "Reason:")
+                {
+                    patient = new OutPatient();
+                    dynamic_cast<OutPatient *>(patient)->setReason(additionalInfo);
+                }
+                else
+                {
+                    // Default to a regular Patient
+                    patient = new Patient();
                 }
 
-                addPatient(sick);
-                cout << "File loaded successfully" << endl;
+                patient->setId(id);
+                patient->setName(name);
+                addPatient(patient);
             }
+
+            cout << "File loaded successfully" << endl;
         }
         catch (const std::exception &e)
         {

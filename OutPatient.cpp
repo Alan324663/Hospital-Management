@@ -7,12 +7,13 @@
 
 using namespace std;
 
-class OutPatient : public Patient
+class OutPatient : public Patient // inherit from Patient
 {
 private:
     string reason;
 
 public:
+    // constructor
     OutPatient() : Patient()
     {
         this->reason = "Unknown";
@@ -20,9 +21,9 @@ public:
 
     OutPatient(int id, const string &name, const string sex, const string reason) : Patient(id, name, sex)
     {
-        setReason(this->reason);
+        setReason(reason);
     }
-
+    // setter & getter
     void setReason(const string &reason)
     {
         if (!reason.empty())
@@ -39,21 +40,21 @@ public:
     {
         return this->reason;
     }
-
-    void Display() override
+    // polymorph function
+     void display() override
     {
-        cout << "In Patient: " << endl;
+        cout << "Out Patient: " << endl;
         cout << "-------------------------------------------------------------------\n";
         cout << "ID      Name        Sex           Reason \n";
         cout << "-------------------------------------------------------------------\n";
         // Implement the display logic for OutPatient
-        Patient::Display(); // Optionally call the base class Display function
+        Patient::display(); // Optionally call the base class Display function
         cout << setw(20) << getReason() << endl;
     }
 
-    void Input() override
+    void input() override
     {
-        Patient::Input();
+        Patient::input();
 
         string reason;
         cout << "Please enter the reason: ";

@@ -15,7 +15,7 @@ public:
         userName = "Unknown";
         password = "Unkonow";
     }
-    User(string userName, string password, string role)
+    User(string userName, string password)
     {
         this->userName = userName;
         this->password = password;

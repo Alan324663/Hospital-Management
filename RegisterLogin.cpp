@@ -12,9 +12,12 @@ private:
     string password;
 
 public:
-    bool userLogin()
+    bool userLogin() // login user to file
     {
-        inputUser();
+        cout << "Enter userName:";
+        cin >> username;
+        cout << "Enter password:";
+        cin >> password;
         bool userFound = false;
         string fileUsername, filePassword;
         ifstream fin("User.dat", ios::in);
@@ -46,9 +49,12 @@ public:
         return userFound;
     }
 
-    void userRegister()
+    void userRegister() // create new user to file
     {
-        inputUser();
+        cout << "Enter userName:";
+        cin >> username;
+        cout << "Enter password:";
+        cin >> password;
 
         ofstream fout("User.dat", ios::out | ios::app);
 

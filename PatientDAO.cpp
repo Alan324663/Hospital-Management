@@ -3,7 +3,7 @@
 #include "Patient.cpp"
 using namespace std;
 
-class PatientDAO
+class PatientDAO // abstract class for PatientCollector
 {
 public:
     virtual void addPatient(Patient *patient) = 0;
